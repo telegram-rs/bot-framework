@@ -1,12 +1,13 @@
 [package]
 name = "bot-framework"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Gustavo Aguiar <gugahoa@gmail.com>"]
 edition = "2018"
 description = "A Telegram Bot framework"
 repository = "https://github.com/telegram-rs/bot-framework"
 license = "MIT"
 keywords = ["telegram", "bot", "framework"]
+readme = "README.md"
 
 [badges]
 maintenance = { status = "experimental" }
