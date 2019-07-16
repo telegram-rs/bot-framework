@@ -38,7 +38,7 @@ You can find a bigger examples in the `examples`.
 This library is available via `crates.io`. In order to use it, just add this to your `Cargo.toml`:
 
 ```
-bot-framework = "0.0.1"
+bot-framework = "0.1"
 ```
 
 The library allows you to do E2E-testing of your bot easily: just specify `TELEGRAM_API_URL` environment variable to point to your fake Telegram test server.
