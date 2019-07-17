@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use futures::stream::Stream;
-use telegram_bot::types::{MessageKind, Update, UpdateKind, Message};
+use telegram_bot::types::{Message, MessageKind, Update, UpdateKind};
 use telegram_bot::Api;
 use tokio_core::reactor::Core;
 
@@ -12,9 +12,17 @@ pub struct BotWrapper {
 }
 
 impl BotWrapper {
-    fn handle_update(api: &Api, commands: &HashMap<String, Box<dyn Fn(&Api, &Message) -> ()>>, update: Update) {
+    fn handle_update(
+        api: &Api,
+        commands: &HashMap<String, Box<dyn Fn(&Api, &Message) -> ()>>,
+        update: Update,
+    ) {
         if let UpdateKind::Message(ref msg) = update.kind {
-            if let MessageKind::Text { ref data, entities: _ } = msg.kind {
+            if let MessageKind::Text {
+                ref data,
+                entities: _,
+            } = msg.kind
+            {
                 let data = data.clone().split_off(1);
                 let data = data.split_whitespace().next().unwrap_or("");
                 commands.get(data).map(|command| command(api, msg));
